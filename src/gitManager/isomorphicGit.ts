@@ -1274,8 +1274,8 @@ export class IsomorphicGit extends GitManager {
 // Convert a value to an Async Iterator
 // This will be easier with async generator functions.
 
-/*eslint-disable */
-function fromValue(value: any) {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function fromValue(value: unknown) {
     let queue = [value];
     return {
         next() {
@@ -1289,11 +1289,13 @@ function fromValue(value: any) {
             return {};
         },
         [Symbol.asyncIterator]() {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
             return this;
         },
     };
 }
 
+// eslint-disable-next-line @typescript-eslint/require-await
 async function* arrayBufferToAsyncIterator(
     buffer: ArrayBuffer
 ): AsyncIterableIterator<Uint8Array> {
